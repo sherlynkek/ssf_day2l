@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>
+            <span data-th-text="${currTime}"></span>
+        </p>
+        <div th:if="${currHour lt 12}">
+            <h3>Good morning</h3>
+        </div>
+        <div data-th-if="${currHour gt 12}">
+            <h3>Good afternoon</h3>
+        </div>
+    </div>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nam qui blanditiis, officiis ut quo recusandae porro iusto velit illo laudantium, atque culpa voluptates reiciendis nobis fuga ipsum id. Corrupti?
+    </p>
+    <div>
+        <img width = 20% height = 20% src = https://picsum.photos/200/300>
+    </div>
+</body>
+</html>
