@@ -1,5 +1,6 @@
 package sg.edu.nus.iss.vttp5a_day2l.repo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -10,7 +11,10 @@ import sg.edu.nus.iss.vttp5a_day2l.model.Item;
 public class ItemRepo {
     private List<Item> itemList;
 
-    private List<Item> getItem() {
+    public List<Item> getItems() {
+
+        List<Item> itemList = new ArrayList<>();
+        
         Item itm = new Item("Apple M4 mini", 5);
         itemList.add(itm);
         itm = new Item("iPhone 16 max pro", 15);
