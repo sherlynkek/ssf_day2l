@@ -11,7 +11,7 @@
             <span data-th-text="${city.name}"></span>
             <ul>
                 <li data-th-each="unit: ${metrics}">
-                    <a data-th-href="@{/weather/city/{country}{country=$city}/metrics/{metrics=${unit}}}">
+                    <a data-th-href="@{'/weather/city/' + ${city.name} + '/metrics/' + ${unit} + ''}">
                         <span data-th-text="$(unit)"></span>
                     </a>
                 </li>

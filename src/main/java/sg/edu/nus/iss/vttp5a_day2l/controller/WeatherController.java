@@ -24,6 +24,7 @@ public class WeatherController {
 
     @Autowired
     CountryService countryService;
+    
     @GetMapping("")
     public String weather(@RequestParam(required = true, name = "country") String city, @RequestParam(name = "metrics", defaultValue = "celsius") String metric, Model model) {
         
