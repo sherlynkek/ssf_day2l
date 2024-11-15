@@ -10,11 +10,11 @@ import sg.edu.nus.iss.vttp5a_day2l.repo.CountryRepo;
 
 @Service
 public class CountryService {
-
+    
     @Autowired
     CountryRepo countryRepo;
 
-    public List<Country> getCountries(){
+    public List<Country> getCountries() {
         return countryRepo.getCountries();
     }
 

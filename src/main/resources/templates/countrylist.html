@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Country</th>
+                <th>Population</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-th-each="country : ${countries}">
+                <td data-th-text="${country.code}"></td>
+                <td data-th-text="${country.name}"></td>
+                <td data-th-text="${country.population}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
