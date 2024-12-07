@@ -6,22 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <p>
-            <span data-th-text="${currTime}"></span>
-        </p>
-        <div th:if="${currHour lt 12}">
-            <h3>Good morning</h3>
-        </div>
-        <div data-th-if="${currHour gt 12}">
-            <h3>Good afternoon</h3>
-        </div>
-    </div>
     <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nam qui blanditiis, officiis ut quo recusandae porro iusto velit illo laudantium, atque culpa voluptates reiciendis nobis fuga ipsum id. Corrupti?
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium fuga exercitationem ipsa iure debitis ad ducimus itaque repellendus libero quis nulla, voluptatibus suscipit nisi ipsam praesentium porro mollitia perspiciatis. Odit?
     </p>
     <div>
-        <img width = 20% height = 20% src = https://picsum.photos/200/300>
+        <p>The current time is <span data-th-text="${currTime}"></span></p>
+        <p data-th-if="${currHour lt 12}"> Morning!</p>
+        <p th:if="${currHour ge 12}"> Afternoon!</p>
     </div>
+    <img src="https://static.wikia.nocookie.net/c9dde1fd-8d96-4288-97ea-6dca45a39891/scale-to-width/755">
 </body>
 </html>

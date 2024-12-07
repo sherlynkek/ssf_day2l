@@ -7,12 +7,13 @@
 </head>
 <body>
     <ul>
-        <li data-th-each="city: ${countries}">
-            <span data-th-text="${city.name}"></span>
+        <li data-th-each="c : ${countries}">
+            <span data-th-text="${c.name}"></span>
             <ul>
-                <li data-th-each="unit: ${metrics}">
-                    <a data-th-href="@{'/weather/city/' + ${city.name} + '/metrics/' + ${unit} + ''}">
-                        <span data-th-text="$(unit)"></span>
+                <li data-th-each="u : ${units}">
+                    <a data-th-href="@{/weather/city/{c}/units/{u} (c = ${c.name}, u = ${u})}">
+                        <span data-th-text="${u}"></span>
+
                     </a>
                 </li>
             </ul>
