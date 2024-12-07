@@ -16,26 +16,27 @@ import sg.edu.nus.iss.vttp5a_day2l.service.itemService;
 @Controller
 @RequestMapping("/items")
 public class ItemController {
-
     @Autowired
-    itemService itemService;
+    itemService itmService;
 
-    @GetMapping
-    public String cartItems(Model model) {
-        List<Item> items = itemService.getItems();
+
+    @GetMapping()
+    public String cartItems(Model model){
+
+        List<Item> items = itmService.getItems();
         model.addAttribute("items", items);
 
-        return "cartlist";
-
+        return "cartList";
     }
 
     @GetMapping("/filter")
-    public String filterCartItems(@RequestParam(name = "itemQuantity") String quantity, Model model) {
-        List<Item> items = itemService.getItems();
-        List<Item> filterItems = items.stream().filter(a -> a.getQuantity() >= Integer.parseInt(quantity)).collect(Collectors.toList());
-        model.addAttribute("items", filterItems);
+    public String filtercartItems(@RequestParam("itemQuantity") String quantity, Model model) {
 
-        return "cartlist";
+        List<Item> items = itmService.getItems();
+        items = items.stream().filter(a -> a.getQuantity() >= Integer.parseInt(quantity))
+        .collect(Collectors.toList());
+        model.addAttribute("items", items);
 
+        return "cartList";
     }
 }

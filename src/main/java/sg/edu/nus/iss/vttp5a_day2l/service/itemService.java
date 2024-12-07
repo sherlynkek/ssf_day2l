@@ -16,6 +16,7 @@ public class itemService {
     ItemRepo itemRepo;
 
     public List<Item> getItems(){
+
         return itemRepo.getItems();
     }
 }

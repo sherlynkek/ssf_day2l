@@ -14,11 +14,11 @@ public class CountryService {
     @Autowired
     CountryRepo countryRepo;
 
-    public List<Country> getCountries() {
+    public List<Country> getCountriesList() {
         return countryRepo.getCountries();
     }
 
-    public Boolean createCountry(Country c) {
+    public Boolean createCountry (Country c) {
         Boolean result = countryRepo.createCountry(c);
 
         return result;

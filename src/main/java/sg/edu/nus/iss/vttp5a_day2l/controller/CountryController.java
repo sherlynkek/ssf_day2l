@@ -15,34 +15,27 @@ import sg.edu.nus.iss.vttp5a_day2l.model.Country;
 import sg.edu.nus.iss.vttp5a_day2l.service.CountryService;
 
 @Controller
-@RequestMapping("/countries")
+@RequestMapping("countries")
 public class CountryController {
-    
+   
     @Autowired
     CountryService countryService;
 
-    @ResponseBody
-    @GetMapping("")
-    public List<Country> getCountries() {
-        return countryService.getCountries();
-    }
-
-    @GetMapping("/list")
-    public String displayCountryList(Model model) {
-        List<Country> countries = countryService.getCountries();
+    @GetMapping()
+    public String getCountries(Model model) {
+        List <Country> countries = countryService.getCountriesList();
         model.addAttribute("countries", countries);
 
-        return "countryList";
+        return "country";
     }
 
-    @GetMapping("/list/filter")
-    public String displayCountryList(@RequestParam("population") String quantity, Model model) {
-        List<Country> countries = countryService.getCountries();
-
-        countries = countries.stream().filter(c -> c.getPopulation() >= Integer.parseInt(quantity)).collect(Collectors.toList());
-        
+    @GetMapping("/filter")
+    public String filterCountries(@RequestParam("population") String popultion, Model model) {
+        List <Country> countries = countryService.getCountriesList();
+        countries = countries.stream().filter(c -> c.getPopulation() >= Integer.parseInt(popultion))
+        .collect(Collectors.toList());
         model.addAttribute("countries", countries);
 
-        return "countrylist";
+        return "country";
     }
 }

@@ -18,39 +18,43 @@ import org.springframework.web.bind.annotation.RequestParam;
 import sg.edu.nus.iss.vttp5a_day2l.model.Country;
 import sg.edu.nus.iss.vttp5a_day2l.service.CountryService;
 
-@Controller
 @RequestMapping("/weather")
 public class WeatherController {
-
+    
     @Autowired
     CountryService countryService;
-    
-    @GetMapping("")
-    public String weather(@RequestParam(required = true, name = "country") String city, @RequestParam(name = "metrics", defaultValue = "celsius") String metric, Model model) {
-        
+
+    @GetMapping()
+    public String weather(@RequestParam(required = true, name = "country",
+    defaultValue = "Singapore") String city, @RequestParam(name = "units", 
+    defaultValue = "celsius") String metric, Model model) {
+
         model.addAttribute("city", city);
-        model.addAttribute("metrics", metric);
+        model.addAttribute("units", metric);
 
         return "weather";
     }
 
+    // %20 in browser path is a space
     // http://localhost:8000/weather/city/Singapore/metrics/celsius
-    @GetMapping("/city/{country}/metrics/{metrics}")
-    public String weather2(@RequestParam(required = true, name = "country") String city, @PathVariable(name = "metrics") String metric, Model model) {
-        
+    @GetMapping("/city/{city}/units/{units}")
+    public String weather2(@PathVariable(required = true, name = "city") String city,
+    @PathVariable(name = "units") String metric, Model model) {
+
         model.addAttribute("city", city);
-        model.addAttribute("metrics", metric);
+        model.addAttribute("units", metric);
 
         return "weather";
     }
 
     @GetMapping("/pagea")
     public String pageA(Model model) {
-        String[] units = {"millimeter", "centimeter", "meter", "kilometer"};
-        List<Country> countries = countryService.getCountries();
+        String[] units = {"fahrenheit", "celsius", "kelvin"};
+        List<Country> countries = countryService.getCountriesList();
 
         model.addAttribute("countries", countries);
-        model.addAttribute("metrics", units);
+        model.addAttribute("units", units);
+        
         return "pagea";
     }
 
@@ -61,12 +65,16 @@ public class WeatherController {
 
     @PostMapping("/forma")
     public String handlePageA(@RequestBody MultiValueMap<String, String> form) {
-        Map<String, String> formData = new HashMap<>();
+        // Map<String, String> formData = new HashMap<>();
 
         for(String str: form.keySet()) {
-            formData.put(str, form.getFirst(str));
-        }
-        return "";
-    }
+            // formData.put(str, form.getFirst(str));
 
+            System.out.println(str + ">>>" + form.getFirst(str));
+        }
+
+        return "forma";
+    }
+    //multi-value map basically stores multiple request params eg.10 easily.
+    //So we can pull the data easily and store in another object
 }

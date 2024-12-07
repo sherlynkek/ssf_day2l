@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class HomeController {
     
-    @GetMapping(path = {"", "/landing"})
+
+    @GetMapping(path={"", "/landing"}) //do this for multiple paths
     public String home(Model model) {
         model.addAttribute("currTime", (new Date()).toString());
 
         Calendar cal = Calendar.getInstance();
         model.addAttribute("currHour", cal.get(Calendar.HOUR_OF_DAY));
+
         return "home";
     }
-
 }
